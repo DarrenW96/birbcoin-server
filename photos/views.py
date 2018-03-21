@@ -8,4 +8,6 @@ def index(request):
     template = loader.get_template('index.html')
     return HttpResponse(template.render())
 
-
+def gallery(request):
+    template = loader.get_template('gallery.html')
+    return HttpResponse(template.render())
