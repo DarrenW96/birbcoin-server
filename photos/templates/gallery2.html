@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>BIRBCOIN 2.0 : Insert Bird Pun Here</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'photos/assets/css/main.css' %}" />
+		<link rel="stylesheet" href="{% static 'photos/assets/css/ie9.css' %}" />
+		</head>
+	<body>
+		<div id="page-wrapper">
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<header id="header">
+								<h1><a href="#" id="logo">BIRBCOIN 2.0</a></h1>
+								<nav id="nav">
+									<a href="{% url 'index' %}">Homepage</a>
+									<a href="{% url 'gallery' %}">Bird Pics</a>
+									<a href="{% url 'gallery2' %}" class="current-page-item">More Bird Pics</a>
+									<a href="{% url 'gallery' %}">One Column</a>
+									<a href="{% url 'gallery' %}">Three Column</a>
+								</nav>
+							</header>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		{% load static %}
+		<img id= "birbs" src="{% static 'photos/img_fjords.jpg' %}">
+		<button type="button" onclick="cycle_img_right()">Next</button>
+		<button type="button" onclick="cycle_img_left()">Previous</button>
+		<script>
+			var image = new Array();
+			image[0] = new Image();
+			image[0].src = "{% static 'photos/images/birbs/img0.jpg' %}";
+			image[1] = new Image();
+			image[1].src = "{% static 'photos/images/birbs/img1.jpg' %}";
+			image[2] = new Image();
+			image[2].src = "{% static 'photos/images/birbs/img2.jpg' %}";
+			image[3] = new Image();
+			image[3].src = "https://i.redd.it/djwqfxlafsb01.png";
+			
+			var counter = 0;
+			
+			function cycle_img_right(){
+				counter ++;
+				if (counter == image.length)
+					counter = 0;
+				document.getElementById('birbs').src = image[counter].src;
+			}
+			
+			function cycle_img_left(){
+				if (counter == 0)
+					counter = image.length - 1;
+				else
+					counter --;
+				document.getElementById('birbs').src = image[counter].src;
+			}
+		</script>
+	</body>
+</html>

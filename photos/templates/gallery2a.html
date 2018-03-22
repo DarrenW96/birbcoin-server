@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>BIRBCOIN 2.0 : Insert Bird Pun Here</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'photos/assets/css/main.css' %}" />
+		<link rel="stylesheet" href="{% static 'photos/assets/css/ie9.css' %}" />
+		</head>
+	<body>
+		<div id="page-wrapper">
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<header id="header">
+								<h1><a href="#" id="logo">BIRBCOIN 2.0</a></h1>
+								<nav id="nav">
+									<a href="{% url 'index' %}" class="current-page-item">Homepage</a>
+									<a href="{% url 'gallery' %}">Bird Pics</a>
+									<a href="{% url 'gallery2' %}">More Bird Pics</a>
+									<a href="{% url 'gallery' %}">One Column</a>
+									<a href="{% url 'gallery' %}">Three Column</a>
+								</nav>
+							</header>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		<img id= "birbs" src="images\birbs\img0.jpg">
+		<button type="button" onclick="cycle_img_right()">Next</button>
+		<button type="button" onclick="cycle_img_left()">Previous</button>
+		<script>
+			//import System.IO;
+			var image = new Array();
+			var i = 0;
+			//var img_folder = "images";
+			//var path = Path.Combine(Directory.GetCurrentDirectory(), img_folder);
+			var cur_path;
+			//var cur_img;
+			/*while (true){
+				cur_img = "img" + i + ".jpg";
+				cur_path = Path.Combine(path, cur_img);
+				if (File.Exists(cur_path)){
+					image[i] = new Image();
+					image[i].src = Path.Combine("Images", cur_img);
+					i ++;
+				}
+				else 
+					break;
+			}*/
+			for(i = 0; i < 4; i ++){
+				image[i] = new Image();
+				cur_path = "images//birbs//img" + i +".jpg"
+				image[i].src = cur_path;
+				//image[i].src = "images//birb s//img" + i +".jpg";
+				//image[i].src = 'images//birbs//img1.jpg';
+			}
+			
+			var counter = 0;
+			
+			function cycle_img_right(){
+				counter ++;
+				if (counter == image.length)
+					counter = 0;
+				document.getElementById('birbs').src = image[counter].src;
+			}
+			
+			function cycle_img_left(){
+				if (counter == 0)
+					counter = image.length - 1;
+				else
+					counter --;
+				document.getElementById('birbs').src = image[counter].src;
+			}
+		</script>
+	</body>
+</html>
