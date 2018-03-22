@@ -28,8 +28,5 @@ class Photo(models.Model):
 	score = models.IntegerField(default = 0)
 	
  	objects = PhotoManager()
-	
-
-	
 
 

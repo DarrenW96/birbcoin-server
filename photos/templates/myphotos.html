@@ -1,0 +1,28 @@
+
+<title>BIRBCOIN 2.0</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'photos/assets/css/main.css' %}" />
+
+	<div id="page-wrapper">
+		<div id="header-wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="12u">
+
+						<header id="header">
+							<h1><a href="#" id="logo">BIRBCOIN 2.0</a></h1>
+							<nav id="nav">
+								<a href="{%  url 'home' %}">Homepage</a>
+								<a href="#">Bird Pics</a>
+							</nav>
+						</header>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		{% for photo in photos %}
+			<img src="{{ photo }}" alt="A bird">
+		{% endfor %}
+	</div>
+
