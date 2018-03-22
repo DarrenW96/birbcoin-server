@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from flickrapi import FlickrAPI
@@ -11,15 +10,13 @@ def pics(request):
     flickr = FlickrAPI(api_key, api_secret, format='parsed-json')
 
     extras = 'url_m'
-    myphotos = flickr.photos.search(user_id='140828067@N04', per_page=5, extras=extras)
-    # myphotos = flickr.photos.search(text='cat', per_page=5, extras=extras)
+    myphotos = flickr.photos.search(user_id='140828067@N04', per_page=10, extras=extras)
     template = loader.get_template('myphotos.html')
 
-    perpage = int(myphotos['photos']['perpage'])
     total = int(myphotos['photos']['total'])
     photos = []
-
-    for i in range(0, min(total, perpage)):
+    print(total)
+    for i in range(0, 10):
         photos.append(myphotos['photos']['photo'][i]['url_m'])
 
     context = {
